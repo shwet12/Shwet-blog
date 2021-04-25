@@ -1,22 +1,29 @@
 ---
-title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+title: Javascript Resources
+date: 2021-04-25
+description: "This post will help you with your next Js interview. It has all the resources which I use on daily basis to brush my Js concepts"
 ---
+Hello guys! These are some of the resources which I use to brush up my Js knowledge. Hope it helps.
 
-This is my first post on my new fake blog! How exciting!
+## Common Js concepts (Beginner's guide)
 
-I'm sure I'll write a lot more interesting things in the future.
+To get started with Javascript I would highly recommend the below playlist. You will get to know the basics of javascript from it.
 
-Oh, and here's a great quote from this Wikipedia on
-[salted duck eggs](https://en.wikipedia.org/wiki/Salted_duck_egg).
+[Javascript from the start](https://www.youtube.com/watch?v=zjVFuft1O2Y&list=PLyuRouwmQCjkYdv4VjuIbvcMZVWSdOm58)
 
-> A salted duck egg is a Chinese preserved food product made by soaking duck
-> eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-> supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-> charcoal paste. The eggs may also be sold with the salted paste removed,
-> wrapped in plastic, and vacuum packed. From the salt curing process, the
-> salted duck eggs have a briny aroma, a gelatin-like egg white and a
-> firm-textured, round yolk that is bright orange-red in color.
 
-![Chinese Salty Egg](./salty_egg.jpg)
+## Javascript advanced concepts to know
+
+* [How Javascript event loop works under the hood in browsers](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=2s&ab_channel=JSConf)
+
+* [What is the heck is 'This' is Javascript](https://www.freecodecamp.org/news/a-guide-to-this-in-javascript-e3b9daef4df1/)
+
+* [What is prototypical inheritance in Javascript](https://www.youtube.com/watch?v=GhJTy5-X3kA&ab_channel=SteveGriffith)
+
+* [What is javascript's execution context](https://www.youtube.com/watch?v=ZvbzSrg0afE&t=8s&ab_channel=AkshaySaini)
+
+## Javascript projects (no frameworks)
+
+I think to be a great web developer its very important to build some projects with vanilla js. This is very important as many people skip this part directly jump to framworks.For this I would recommend to checkout the below playlist.
+
+* [Vanilla Js projects](https://www.youtube.com/watch?v=hdI2bqOjy3c&list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX)
