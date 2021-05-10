@@ -1,108 +1,123 @@
 ---
-title: New Beginnings
-date: "2015-05-28T22:40:32.169Z"
-description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+title: The MVC design pattern
+date: "2021-05-11"
+description: This blog talks about the concept behind the famous mvc pattern using a simple todo app.
 ---
 
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
+## What is Model View Controller?
 
-## On deer horse aboard tritely yikes and much
+MVC is one possible pattern for organizing your code. It's a popular one.
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+  * Model - Manages the data of an application
+  * View - A visual representation of the model
+  * Controller - Links the user and the system
 
-- This however showed weasel
-- Well uncritical so misled
-  - this is very interesting
-- Goodness much until that fluid owl
+The model is the data.
 
-When she reached the first hills of the **Italic Mountains**, she had a last
-view back on the skyline of her hometown _Bookmarksgrove_, the headline of
-[Alphabet Village](http://google.com) and the subline of her own road, the Line
-Lane. Pityful a rhetoric question ran over her cheek, then she continued her
-way. On her way she met a copy.
+The view is how the data is displayed. This is the place where we write the view of the app.
 
-### Overlaid the jeepers uselessly much excluding
+The controller connects the model and the view. This place is where all the event listners goes.
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with
-[Longe and Parole](http://google.com) and dragged her into their agency, where
-they abused her for their projects again and again. And if she hasn’t been
-rewritten, then they are still using her.
+The model never touches the view. The view never touches the model. The controller connects them.
 
-> Far far away, behind the word mountains, far from the countries Vokalia and
-> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-> right at the coast of the Semantics, a large language ocean.
+## Our basic structure of the js would look something like this
 
-It is a paradisematic country, in which roasted parts of sentences fly into your
-mouth. Even the all-powerful Pointing has no control about the blind texts it is
-an almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar.
+```javascript
+class Model {
+  constructor() {}
+}
 
-### According a funnily until pre-set or arrogant well cheerful
+class View {
+  constructor() {}
+}
 
-The Big Oxmox advised her not to do so, because there were thousands of bad
-Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
-didn’t listen. She packed her seven versalia, put her initial into the belt and
-made herself on the way.
+class Controller {
+  constructor(model, view) {
+    this.model = model
+    this.view = view
+  }
+}
 
-1.  So baboon this
-2.  Mounted militant weasel gregariously admonishingly straightly hey
-3.  Dear foresaw hungry and much some overhung
-4.  Rash opossum less because less some amid besides yikes jeepers frenetic
-    impassive fruitlessly shut
+const app = new Controller(new Model(), new View())
+```
+<p>&nbsp;</p>
+As you can see from the above snippet the controller will have the instances of both model and view cause its forms the connection between them in the app.
 
-When she reached the first hills of the Italic Mountains, she had a last view
-back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-Village and the subline of her own road, the Line Lane. Pityful a rhetoric
-question ran over her cheek, then she continued her way. On her way she met a
-copy.
+## View
 
-> The copy warned the Little Blind Text, that where it came from it would have
-> been rewritten a thousand times and everything that was left from its origin
-> would be the word "and" and the Little Blind Text should turn around and
-> return to its own, safe country.
+___
 
-But nothing the copy said could convince her and so it didn’t take long until a
-few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
-and dragged her into their agency, where they abused her for their projects
-again and again. And if she hasn’t been rewritten, then they are still using
-her. Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts.
+We're going to create the view by manipulating the DOM - the document object model.
 
-#### Silent delightfully including because before one up barring chameleon
+Neither the controller nor the model should know anything about the DOM, HTML elements, CSS, or any of that. Anything relating to it should be in the view.
 
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-large language ocean. A small river named Duden flows by their place and
-supplies it with the necessary regelialia. It is a paradisematic country, in
-which roasted parts of sentences fly into your mouth.
+```Javascript
+class View {
+    constructor() {
+        // here we create all the elements needed our html and select the root div where our todo app would reside.
 
-Even the all-powerful Pointing has no control about the blind texts it is an
-almost unorthographic life One day however a small line of blind text by the
-name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
-advised her not to do so, because there were thousands of bad Commas, wild
-Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
+        // Append the title, form, and todo list to the app
+        this.root.append(this.form, this.todoContainer)
+    }
+    // Create an element with an optional CSS class
+    createElement(tag, className) {
+        const element = document.createElement(tag)
+        if (className) element.classList.add(className)
 
-##### Wherever far wow thus a squirrel raccoon jeez jaguar this from along
+        return element
+    }
 
-She packed her seven versalia, put her initial into the belt and made herself on
-the way. When she reached the first hills of the Italic Mountains, she had a
-last view back on the skyline of her hometown Bookmarksgrove, the headline of
-Alphabet Village and the subline of her own road, the Line Lane. Pityful a
-rhetoric question ran over her cheek, then she continued her way. On her way she
-met a copy.
+    // Retrieve an element from the DOM
+    getElement(selector) {
+        const element = document.querySelector(selector)
 
-###### Slapped cozy a that lightheartedly and far
+        return element
+    }
 
-The copy warned the Little Blind Text, that where it came from it would have
-been rewritten a thousand times and everything that was left from its origin
-would be the word "and" and the Little Blind Text should turn around and return
-to its own, safe country. But nothing the copy said could convince her and so it
-didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
-with Longe and Parole and dragged her into their agency, where they abused her
-for their projects again and again.
+    displayTodos(todos) {
+        // this function is kind of the render function for our app which would isplay the todos.
+    }
+    bindAddTodo(handler) {
+      // bind add todo
+    }
+
+    bindDeleteOrToggleTodo(deleteHandler, toggleHandler) {
+      // bind delete or toggle changes
+    }
+    bindFilterChange(handler) {
+     // bind filter changes
+    }
+}
+```
+## Model
+
+___
+
+This will be the place where our data would reside and all manipulations to it would be done here
+
+```Javascript
+
+class Model {
+    constructor() {
+        this.todos = [];
+    }
+    bindTodoListChanged(callback) {
+        this.onTodoListChanged = callback;
+    }
+    addTodo(todoText) {
+       // add a todo to the todos data
+    }
+
+    deleteTodo(id) {
+       // delete a todo from the todos data
+    }
+
+    toggleTodo(id) {
+        // Flip the complete boolean on the specified todo
+    }
+    filterTodo(value) {
+        // Filter the todos on the type of selection
+    }
+
+}
+```
