@@ -121,3 +121,41 @@ class Model {
 
 }
 ```
+
+## Controller
+
+___
+
+Controller acts as a middleware between Model and View.
+
+```Javascript
+
+class Controller {
+    constructor(model, view) {
+        this.model = model
+        this.view = view
+        this.model.bindTodoListChanged(this.onTodoListChanged)
+        this.view.bindAddTodo(this.handleAddTodo)
+        this.view.bindFilterChange(this.handleFliterChange)
+        this.view.bindDeleteOrToggleTodo(this.handleDeleteTodo, this.handleToggleTodo);
+    }
+    onTodoListChanged = (todos) => {
+        this.view.displayTodos(todos)
+    }
+
+    handleAddTodo = (todoText) => {
+        this.model.addTodo(todoText);
+    }
+    handleDeleteTodo = (id) => {
+        this.model.deleteTodo(id);
+    }
+    handleToggleTodo = (id) => {
+        this.model.toggleTodo(id);
+    }
+    handleFliterChange = (value) => {
+        this.model.filterTodo(value);
+    }
+
+}
+
+```
