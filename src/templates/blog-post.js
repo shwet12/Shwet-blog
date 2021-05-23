@@ -3,7 +3,9 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Navigation from "../components/navigation"
 import SEO from "../components/seo"
+import '../utils/index.css'
 import { rhythm, scale } from "../utils/typography"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
@@ -13,6 +15,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Navigation />
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}

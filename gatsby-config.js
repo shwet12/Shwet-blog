@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Shwet's Blog Site`,
+    title: `Shwet Anand`,
     author: {
       name: `Shwet anand`,
       summary: `Software Developer | Football Lover | Foodie | Learner`,
@@ -10,6 +10,37 @@ module.exports = {
     social: {
       twitter: `shwet_anand`,
     },
+    Organisations: [
+      {
+        name: `Deloitte`,
+        role: `Technical Consultant @Deloitte`,
+        duration: `Oct 2020 - Present`,
+        projects: [
+          `Write modern, performant, maintainable code for a diverse array of client and internal projects`,
+          `Working on CMS for a Large insurance company. Building UI components for AEM to make the website using Javascript, HTML,CSS, Handlebars js,Web components`,
+          `Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis`
+        ]
+      },
+      {
+        name: `Nous Infosystems`,
+        role: `Software Engineer @Nous`,
+        duration: `Jan 2020 - Oct 2020`,
+        projects: [
+          `Developed an application for one of the biggest credit ratings company. Did UI design and implementation.The tech stack included React js, Redux, Redux-saga, Scss, Primereact`,
+          `Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis`
+        ]
+      },
+      {
+        name: `Tcs`,
+        role: `System Engineer @TCS`,
+        duration: `Sept 2016 - Jan 2020`,
+        projects: [
+          `Write modern, performant, maintainable code for a diverse array of client and internal projects`,
+          `Developed an application for TCS internal usage that manages the events which are held in TCS for marketing and sales purpose.The tech stack included Angular JS, HTML, CSS, Java`,
+          `Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis`
+        ]
+      }
+    ],
   },
   plugins: [
     {

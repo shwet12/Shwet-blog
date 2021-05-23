@@ -6,8 +6,9 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
+import Social from "./socialMedia";
 
 import { rhythm } from "../utils/typography"
 
@@ -35,37 +36,37 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author.name}
+    <>
+      <div
         style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
+          display: `flex`
         }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
-      <p>
-        <strong>{author.name}</strong>
-        <p>{author.summary}
-          <br></br>
-          <a href={`https://twitter.com/${social.twitter}`}>
-            Lets connect on Twitter
-        </a>
+      >
+        <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author.name}
+          style={{
+            marginRight: rhythm(1 / 2),
+            marginBottom: 0,
+            minWidth: 50,
+            borderRadius: `100%`,
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        />
+        <p className="intro-section">
+          <strong>{author.name}</strong>
+          <p>{author.summary}
+          </p>
         </p>
-      </p>
-    </div>
+      </div>
+      <Social />
+
+
+    </>
   )
 }
 

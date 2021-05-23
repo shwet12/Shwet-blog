@@ -1,72 +1,43 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
+import React from 'react'
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Banner from '../components/Banner'
+import Navigation from '../components/navigation'
+import Bio from "../components/bio";
+import SEO from "../components/seo";
+import Timeline from "../components/timeline"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-
+const About = (data, location) => {
+  const siteTitle = "Shwet's Portfolio"
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title="Home" />
       <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+      <Navigation />
+      <Banner />
+      <h4 className="card-about-heading">Hi, I'm Shwet </h4>
+      <p className="card-about-description">I'm a frontend engineer who specializes in building digital experiences.
+      Currently, I'm an engineer at Deloitte focused on building accessible, human-centered products.</p>
+      <br />
+      <p>
+        Love to Architect web for the consumers with the skills and passion for building awesome Web Apps using Javascript.
+
+      </p>
+      <p>
+        Here are a few technologies I've been working with recently:
+      </p>
+      <ul className="skills-list">
+        <li>JavaScript (ES6+)</li>
+        <li>React</li>
+        <li>HTML,CSS</li>
+        <li>Angular</li>
+        <li>Node.js</li>
+        <li>Typescript</li>
+        <li>Redux</li>
+        <li>Gatsby.js</li>
+      </ul>
+      <Timeline />
     </Layout>
   )
 }
 
-export default BlogIndex
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`
+export default About;
