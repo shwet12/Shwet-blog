@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from "../components/layout"
-import Banner from '../components/Banner'
+import Banner from '../components/banner'
 import Navigation from '../components/navigation'
 import Bio from "../components/bio";
 import SEO from "../components/seo";
