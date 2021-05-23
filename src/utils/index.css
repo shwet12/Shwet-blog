@@ -75,7 +75,6 @@ ul {
 
 .card-about-description{
     text-align: left;
-    text-wrap: initial;
     padding: 0px 5px;
 }
 
@@ -110,6 +109,7 @@ ul {
 
 .timeLine__container{
     display: flex;
+    min-height: 450px;
 }
 .timeline__content__tabs{
     flex: 1 1 30%;
@@ -125,7 +125,7 @@ ul {
     align-items: center; */
     width: 100%;
     /* height: var(--tab-height); */
-    border-left: 2px solid #007acc;
+    cursor: pointer;
     background-color: transparent;
     color: #007acc;
     border: none;
@@ -134,6 +134,7 @@ ul {
     text-align: left;
     white-space: nowrap;
 }
+
 .timeline__content{
     flex: 1 1 70%;
 }

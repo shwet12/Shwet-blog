@@ -14,7 +14,7 @@ const Social = () => {
                     </a>
                 </li>
                 <li className="list-inline-item">
-                    <a href="www.linkedin.com/in/shwet-anand-33503475" target="_blank">
+                    <a href="https://www.linkedin.com/in/shwet-anand-33503475/" target="_blank">
                         <img className="media-icon" src={linkedin} alt="linked-url" />
                     </a>
                 </li>
