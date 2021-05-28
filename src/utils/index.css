@@ -157,4 +157,29 @@ ul {
 }
 .timeline__content__title{
     margin: 1rem 0;
+    line-height: 1.5;
 }
+
+@media only screen and (max-width: 600px) {
+    .card {
+        background-image: none;
+        height: auto;
+    box-shadow: none;
+    }
+    .container{
+        padding: 2px 0;
+    }
+    .skills-list{
+        margin: 0 !important;
+    }
+    .timeLine__container{
+        display: flex;
+        flex-direction: column;
+    }
+    .timeline__tabs{
+        text-align: center;
+    }
+    .timeline__content__tabs{
+        display: flex;
+    }
+  }
