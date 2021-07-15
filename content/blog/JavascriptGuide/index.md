@@ -1,29 +1,80 @@
 ---
-title: Javascript Resources
+title: PubSub pattern using Javascript
 date: 2021-04-25
-description: "This post will help you with your next Js interview. It has all the resources which I use on daily basis to brush my Js concepts"
+description: "This post talks about the famous publish subscribe pattern and its usage in Frontend engineering."
 ---
-Hello guys! These are some of the resources which I use to brush up my Js knowledge. Hope it helps.
 
-## Common Js concepts (Beginner's guide)
+## What is PubSub anyway
 
-To get started with Javascript I would highly recommend the below playlist. You will get to know the basics of javascript from it.
+The Publisher/Subscriber pattern is basically used to create seperate modules in our codebase which can then communicate among themselves without depending directly on each other. So using a event manager module we can help our components communicte among themselves without knowing about each other.
 
-[Javascript from the start](https://www.youtube.com/watch?v=zjVFuft1O2Y&list=PLyuRouwmQCjkYdv4VjuIbvcMZVWSdOm58)
+## PubSub in frontend ecosystem.
+
+If you are a frontend develper you must have used the pubsub patter at some point of time. If we had ever added an event listener on an element you are actually the pubsub pattern.
+
+Something like this
+
+```Javascript
+element.addEventListener('click', () => {
+    console.log('I got clicked');
+})
+```
+In this the element is the subscriber and the event is the click event.So once click happens we execute the callback function.
+
+Similarly we can create our own custom events and have a callback function attached for that event.
 
 
-## Javascript advanced concepts to know
+## How do we implement our own PubSub
 
-* [How Javascript event loop works under the hood in browsers](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=2s&ab_channel=JSConf)
+Firstly We would need event manager as this would maintain the actual state of our subscribers and their corrosponding events attached.
 
-* [What is the heck is 'This' is Javascript](https://www.freecodecamp.org/news/a-guide-to-this-in-javascript-e3b9daef4df1/)
 
-* [What is prototypical inheritance in Javascript](https://www.youtube.com/watch?v=GhJTy5-X3kA&ab_channel=SteveGriffith)
+```Javascript
+export const pubsub = {
+    events: {},
+    subscribe: function (evName, fn) {
+        console.log(`PUBSUB: someone just subscribed to know about ${evName}`);
+        //add an event with a name as new or to existing list
+        this.events[evName] = this.events[evName] || [];
+        this.events[evName].push(fn);
+        console.log(this.events);
+    },
+    unsubscribe: function (evName, fn) {
+        console.log(`PUBSUB: someone just UNsubscribed from ${evName}`);
+        //remove an event function by name
+        if (this.events[evName]) {
+            this.events[evName] = this.events[evName].filter(f => f !== fn);
+        }
+    },
+    publish: function (evName, data) {
+        console.log(`PUBSUB: Making an broadcast about ${evName} with ${data}`);
+        //emit|publish|announce the event to anyone who is subscribed
+        if (this.events[evName]) {
+            this.events[evName].forEach(f => {
+                f(data);
+            });
+        }
+    }
+};
+```
 
-* [What is javascript's execution context](https://www.youtube.com/watch?v=ZvbzSrg0afE&t=8s&ab_channel=AkshaySaini)
+This would be our event manager which will have an events object which will have the list of events. Now for each events we will maintain list of callback functions from our different subscribers.
 
-## Javascript projects (no frameworks)
+* Subscribe function would add the supplied callback to the corrosponding event.
 
-I think to be a great web developer its very important to build some projects with vanilla js. This is very important as many people skip this part directly jump to framworks.For this I would recommend to checkout the below playlist.
+* Unsubscribe function would remove the callback for the array of callback for that event.
 
-* [Vanilla Js projects](https://www.youtube.com/watch?v=hdI2bqOjy3c&list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX)
+* Publish would execute all the callbacks for the passed event.
+
+## Implementation
+
+Suppose we have a form which takes some inputs and displays those value in some table form. So as we see this can be a perfect usecase to implement pubsub.
+
+* We will have a seperate component for Form and for the display container.
+
+* The display conatiner component will subscribe to a custom form submission event and provide a callback fucntion which needs to get executed. On initial load the conatiner would subscribe for that event.
+
+## Sample project
+
+https://github.com/shwet12/PubSub-implementation-in-JS-project
+

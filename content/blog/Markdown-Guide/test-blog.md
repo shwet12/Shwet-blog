@@ -1,7 +1,7 @@
 ---
-title: Markdown cheatsheet
+title: Markdown Guide
 date: 2021-04-25
-description: "Markdown tutorial"
+description: "Handy guide to writing Markdwon files"
 ---
 
 <!-- Headings -->
